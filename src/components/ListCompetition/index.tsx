@@ -2,22 +2,22 @@ import { PropsCompetition } from '@/pages/competitions'
 import React, { useMemo, useState } from 'react'
 
 export default function ListCompetition({ competitions }: PropsCompetition) {
-  const [busca, setBusca] = useState('')
+  const [search, setSearch] = useState('')
 
   const competitionsFilter = useMemo(() => {
-    const lowerBusca = busca.toLowerCase()
+    const lowerBusca = search.toLowerCase()
 
     return competitions.filter((competition) =>
       competition.competition_name.toLowerCase().includes(lowerBusca),
     )
-  }, [competitions, busca])
+  }, [competitions, search])
 
   return (
     <>
       <input
         type="text"
-        value={busca}
-        onChange={(ev) => setBusca(ev.target.value)}
+        value={search}
+        onChange={(ev) => setSearch(ev.target.value)}
       />
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
