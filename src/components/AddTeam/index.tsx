@@ -1,5 +1,4 @@
-// import { api } from '@/services/api'
-import axios from 'axios'
+import { apiClient } from '@/services/api'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -26,7 +25,7 @@ export default function AddTeam() {
 
     // TODO: axios front side
     try {
-      const response = await axios.post('http://localhost:3000/teams', data)
+      const response = await apiClient.post('http://localhost:3000/teams', data)
       console.log(response.data)
       return response.data
     } catch (err) {

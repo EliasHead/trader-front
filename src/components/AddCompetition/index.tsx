@@ -1,4 +1,4 @@
-import { api } from '@/services/api'
+import { apiClient } from '@/services/api'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -22,16 +22,17 @@ export default function AddCompetition() {
       season_name: seasonName,
     }
 
-    api
-      .post('/competition', data)
-      .then(function (response) {
-        console.log(response)
-        setCompetitionName('')
-        setSeasonName('')
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+    // TODO: axios front side
+    try {
+      const response = await apiClient.post(
+        'http://localhost:3000/competition',
+        data,
+      )
+      console.log(response.data)
+      return response.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
