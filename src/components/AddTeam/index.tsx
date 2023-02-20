@@ -23,16 +23,23 @@ export default function AddTeam() {
       team_country: teamCountry,
     }
 
-    api
-      .post('/teams', data)
-      .then(function (response) {
-        console.log(response)
-        setTeamName('')
-        setTeamCountry('')
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+    try {
+      const response = await api.post('/teams', data)
+      console.log(response.data)
+      return response.data
+    } catch (err) {
+      console.log(err)
+    }
+    // api
+    //   .post('/teams', data)
+    //   .then(function (response) {
+    //     console.log(response)
+    //     setTeamName('')
+    //     setTeamCountry('')
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error)
+    //   })
   }
 
   return (

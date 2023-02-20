@@ -9,10 +9,11 @@ COPY package*.json ./
 # COPY tsconfig.json file
 COPY tsconfig.json ./
 
-COPY . .
+# Install the dependencies (but don't rebuild everything if only package.json changed)
+RUN yarn install
 
-# Install app dependencies
-RUN yarn install --development
+# Copy the rest of the project files to the container
+COPY . .
 
 EXPOSE 3001
 

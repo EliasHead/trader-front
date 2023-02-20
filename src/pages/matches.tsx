@@ -7,22 +7,6 @@ import AddMatches, { PropsTeam } from '@/components/AddMatches'
 import ListMatches from '@/components/ListMatches'
 import { loadMatches } from '@/lib/loadMateches'
 
-// type MatchesType = {
-//   match_id?: number
-//   match_date?: string | Date
-//   home_goals?: number
-//   visitor_goals?: number
-//   odd?: number
-//   strategy?: string
-//   result?: string
-//   review?: string
-//   stake?: number
-//   round?: number
-//   competition_id: number
-//   home_team_id: number
-//   visitor_team_id: number
-// }
-
 export default function Matches({ teams, competitions, matches }: PropsTeam) {
   return (
     <>
