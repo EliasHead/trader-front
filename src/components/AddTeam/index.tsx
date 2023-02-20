@@ -1,4 +1,5 @@
-import { api } from '@/services/api'
+// import { api } from '@/services/api'
+import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -23,23 +24,14 @@ export default function AddTeam() {
       team_country: teamCountry,
     }
 
+    // TODO: axios front side
     try {
-      const response = await api.post('/teams', data)
+      const response = await axios.post('http://localhost:3000/teams', data)
       console.log(response.data)
       return response.data
     } catch (err) {
       console.log(err)
     }
-    // api
-    //   .post('/teams', data)
-    //   .then(function (response) {
-    //     console.log(response)
-    //     setTeamName('')
-    //     setTeamCountry('')
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error)
-    //   })
   }
 
   return (
