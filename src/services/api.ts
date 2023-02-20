@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // TODO: axios server side
-export const apiServer = axios.create({
+export const api = axios.create({
   baseURL: 'http://api:3000',
 })
 

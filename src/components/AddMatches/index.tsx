@@ -1,4 +1,4 @@
-import { api } from '@/services/api'
+import { apiClient } from '@/services/api'
 import React, { useState } from 'react'
 
 export type Teams = {
@@ -95,7 +95,7 @@ export default function AddMatches({ teams, competitions }: PropsTeam) {
     setRoundName(e.currentTarget.value)
   }
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault()
 
     const data = {
@@ -105,18 +105,17 @@ export default function AddMatches({ teams, competitions }: PropsTeam) {
       round: roundName,
     }
 
-    api
-      .post('/matches', data)
-      .then(function (response) {
-        console.log(response)
-        setHomeTeam('')
-        setVisitorTeam('')
-        setCompetition('')
-        setRoundName('')
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+    // TODO: axios front side
+    try {
+      const response = await apiClient.post(
+        'http://localhost:3000/matches',
+        data,
+      )
+      console.log(response.data)
+      return response.data
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
