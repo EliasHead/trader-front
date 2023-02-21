@@ -5,7 +5,6 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 
 // # Import também o next/head, você vai precisar dele
-import Head from 'next/head'
 
 import '../styles/globals.css'
 
@@ -17,9 +16,6 @@ Router.events.on('routeChangeError', () => NProgress.done())
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <link rel="stylesheet" type="text/css" href="/npprogress.css" />
-      </Head>
       <Component {...pageProps} />
     </>
   )
