@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      teams,
+      teams: teams.data,
     },
     revalidate: 60 * 60,
   }

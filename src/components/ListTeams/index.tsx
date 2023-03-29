@@ -7,8 +7,8 @@ export default function ListTeams({ teams }: PropsTeams) {
   const teamsFilter = useMemo(() => {
     const lowerSearch = search.toLowerCase()
 
-    return teams.filter((competition) =>
-      competition.team_name.toLowerCase().includes(lowerSearch),
+    return teams.filter((team) =>
+      team.team_name.toLowerCase().includes(lowerSearch),
     )
   }, [teams, search])
 
